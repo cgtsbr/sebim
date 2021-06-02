@@ -1,0 +1,1999 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/SEBIM#"
+     xml:base="http://www.semanticweb.org/SEBIM"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:obda="https://w3id.org/obda/vocabulary#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:sebim="http://www.semanticweb.org/SEBIM#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:geosparql="http://www.opengis.net/ont/geosparql#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/SEBIM#">
+        <rdfs:comment>Ontologia simplificada para interoperabilidade de dados BIM com outros dados dinâmicos.
+Aplicação de SWRL para inferências na indicação de resultados para certificação LEED.
+
+Trabalhos correlatos:
+
+SimpleBIM
+BOT
+BIM_SO
+BIM_CO</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasAdjacency -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasAdjacency">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/SEBIM#hasAdjacency"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <owl:propertyDisjointWith rdf:resource="http://www.semanticweb.org/SEBIM#hasIntercection"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasCertification -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasCertification">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Construction"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Certification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasConstruction -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasConstruction">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/SEBIM#hasZone"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Construction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasEquipment -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasEquipment">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Equipment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasFloor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasFloor">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/SEBIM#hasZone"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Floor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasGeometry -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasGeometry">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#CityData"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Terrain"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Geometry"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasIntercection -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasIntercection">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/SEBIM#hasIntercection"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasMaterial -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasMaterial">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Material"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Zone"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Material"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasMaterialClassification -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasMaterialClassification">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Material"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#MaterialClassification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasMeasurement -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasMeasurement">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Equipment"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Measurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasSpace -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasSpace">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/SEBIM#hasZone"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasStyleArea -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasStyleArea">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#StyleArea"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasTopografy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasTopografy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Construction"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Terrain"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#hasZone -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/SEBIM#hasZone">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#asWkt -->
+
+    <owl:DatatypeProperty rdf:about="http://www.opengis.net/ont/geosparql#asWkt">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Geometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#area -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/SEBIM#area">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#dateMeasure -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/SEBIM#dateMeasure">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Material"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Measurement"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#description -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/SEBIM#description">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Equipment"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Material"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#StyleArea"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#energyValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/SEBIM#energyValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/SEBIM#value"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Equipment"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Zone"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/SEBIM#name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/SEBIM#CityData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#score -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/SEBIM#score">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Certification"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Construction"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#value -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/SEBIM#value">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Equipment"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Material"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Measurement"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Zone"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#AcousticPerformance -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#AcousticPerformance">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#BicycleFacilities -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#BicycleFacilities">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#LocationTransportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#BikePath -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#BikePath">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CityData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#BuildingCertified -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#BuildingCertified">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CityData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#BuildingLifecyleImpactReduction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#BuildingLifecyleImpactReduction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#MaterialResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#BusStop -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#BusStop">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CityData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Certification -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Certification"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#CertificationArea -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#CertificationArea">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#Certification"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#CityData -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#CityData"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Construction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Construction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#ConstructionDemolitionWaste -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#ConstructionDemolitionWaste">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#MaterialResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#ConstructionIndoorAirQualityPlan -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#ConstructionIndoorAirQualityPlan">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#CoolingTowerWaterUse -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#CoolingTowerWaterUse">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#WaterEfficiency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Daylight -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Daylight">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#DimmerSwitch -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#DimmerSwitch">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#Equipment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#EnergyAtmosphere -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#EnergyAtmosphere">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CertificationArea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#EnvironmentalProductDeclaration -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#EnvironmentalProductDeclaration">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#MaterialResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Equipment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Equipment"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Floor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Floor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Geometry -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Geometry"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#GreenVehicle -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#GreenVehicle">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#LocationTransportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#HeatIslandReduction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#HeatIslandReduction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#SustainableSite"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#HighPrioritySite -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#HighPrioritySite">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#LocationTransportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#IndoorAirQualityAssessment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#IndoorAirQualityAssessment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#IndoorAirQualityStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#IndoorAirQualityStrategy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CertificationArea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#IndoorWaterUseReduction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#IndoorWaterUseReduction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#WaterEfficiency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#IntegrativeProcess -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#IntegrativeProcess">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CertificationArea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Interface -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Interface"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#InteriorLighting -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#InteriorLighting">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#LEEDCertified -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#LEEDCertified">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#Certification"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#LEEDGold -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#LEEDGold">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#Certification"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#LEEDPlatinum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#LEEDPlatinum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#Certification"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#LEEDSilver -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#LEEDSilver">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#Certification"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#LightPollutionReduction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#LightPollutionReduction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#SustainableSite"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#LocationTransportation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#LocationTransportation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CertificationArea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#LowEmittingMaterial -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#LowEmittingMaterial">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Material -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Material"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#MaterialClassification -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#MaterialClassification"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#MaterialIngredients -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#MaterialIngredients">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#MaterialResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#MaterialResource -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#MaterialResource">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CertificationArea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Measurement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Measurement"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#NeighborhoodDevelopmentLocation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#NeighborhoodDevelopmentLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#LocationTransportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#OpenSpace -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#OpenSpace">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#SustainableSite"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#OutdoorWaterUseReduction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#OutdoorWaterUseReduction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#WaterEfficiency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Park -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Park">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CityData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#PbtSourceReduction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#PbtSourceReduction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#MaterialResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#QualityTransport -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#QualityTransport">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#LocationTransportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#QualityView -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#QualityView">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#RainwaterManagement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#RainwaterManagement">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#SustainableSite"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#ReducedParkingFootprint -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#ReducedParkingFootprint">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#LocationTransportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#RenewableEnergyProduction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#RenewableEnergyProduction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#EnergyAtmosphere"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#SensitiveLandProtection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#SensitiveLandProtection">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#LocationTransportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#SiteAssessment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#SiteAssessment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#SustainableSite"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#SiteDevelopment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#SiteDevelopment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#SustainableSite"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#SiteMasterPlan -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#SiteMasterPlan">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#SustainableSite"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#SourceReductionMercury -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#SourceReductionMercury">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#MaterialResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#SourcingRawMaterial -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#SourcingRawMaterial">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#MaterialResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Space -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Space">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#StyleArea -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#StyleArea"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#SurroundingDensityDiverseUses -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#SurroundingDensityDiverseUses">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#LocationTransportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#SustainableSite -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#SustainableSite">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CertificationArea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#TenantDesignConstructionGuidelines -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#TenantDesignConstructionGuidelines">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#SustainableSite"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Terrain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Terrain"/>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#ThermalComfort -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#ThermalComfort">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#IndoorEnvironmentalQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#WaterEfficiency -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#WaterEfficiency">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#CertificationArea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#WaterMetering -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#WaterMetering">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/SEBIM#WaterEfficiency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Zone -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/SEBIM#Zone"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Andar0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Andar0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Floor"/>
+        <hasSpace rdf:resource="http://www.semanticweb.org/SEBIM#Patio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Andar1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Andar1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Floor"/>
+        <hasSpace rdf:resource="http://www.semanticweb.org/SEBIM#Apartamento_101"/>
+        <hasSpace rdf:resource="http://www.semanticweb.org/SEBIM#Apartamento_102"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Andar2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Andar2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Floor"/>
+        <hasSpace rdf:resource="http://www.semanticweb.org/SEBIM#Apartamento_201"/>
+        <hasSpace rdf:resource="http://www.semanticweb.org/SEBIM#Apartamento_202"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Apartamento_101 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Apartamento_101">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Apartamento_102 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Apartamento_102">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Apartamento_201 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Apartamento_201">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Apartamento_202 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Apartamento_202">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#AreaBicicleta -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#AreaBicicleta">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#BicycleFacilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Bicicletario -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Bicicletario">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+        <hasMaterial rdf:resource="http://www.semanticweb.org/SEBIM#SuporteBicicleta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#EdificioStark -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#EdificioStark">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Construction"/>
+        <hasEquipment rdf:resource="http://www.semanticweb.org/SEBIM#PainelFotovoltaico"/>
+        <hasFloor rdf:resource="http://www.semanticweb.org/SEBIM#Andar0"/>
+        <hasFloor rdf:resource="http://www.semanticweb.org/SEBIM#Andar1"/>
+        <hasFloor rdf:resource="http://www.semanticweb.org/SEBIM#Andar2"/>
+        <hasTopografy rdf:resource="http://www.semanticweb.org/SEBIM#Terreno"/>
+        <area rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1000.0</area>
+        <energyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">900</energyValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Escada -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Escada">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Zone"/>
+        <hasIntercection rdf:resource="http://www.semanticweb.org/SEBIM#Andar0"/>
+        <hasIntercection rdf:resource="http://www.semanticweb.org/SEBIM#Andar1"/>
+        <hasIntercection rdf:resource="http://www.semanticweb.org/SEBIM#Andar2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#EspacoAberto -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#EspacoAberto">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#OpenSpace"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#EspacoVegetacao -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#EspacoVegetacao">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+        <hasStyleArea rdf:resource="http://www.semanticweb.org/SEBIM#Vegetacao"/>
+        <area rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">350</area>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Estacionamento -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Estacionamento">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Localizacao -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Localizacao">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Geometry"/>
+        <geosparql:asWkt>POINT (612393.83 7796417.21)</geosparql:asWkt>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#PainelFotovoltaico -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#PainelFotovoltaico">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Equipment"/>
+        <energyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">272</energyValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Patio -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Patio">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+        <hasSpace rdf:resource="http://www.semanticweb.org/SEBIM#Bicicletario"/>
+        <hasSpace rdf:resource="http://www.semanticweb.org/SEBIM#EspacoVegetacao"/>
+        <hasSpace rdf:resource="http://www.semanticweb.org/SEBIM#Estacionamento"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#ProducaoEnergiaRenovavel -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#ProducaoEnergiaRenovavel">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#RenewableEnergyProduction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#RackBike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#RackBike">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#MaterialClassification"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#SuporteBicicleta -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#SuporteBicicleta">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Material"/>
+        <hasMaterialClassification rdf:resource="http://www.semanticweb.org/SEBIM#RackBike"/>
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rack Bike</description>
+        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6</value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Terreno -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Terreno">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#Terrain"/>
+        <hasGeometry rdf:resource="http://www.semanticweb.org/SEBIM#Localizacao"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/SEBIM#Vegetacao -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/SEBIM#Vegetacao">
+        <rdf:type rdf:resource="http://www.semanticweb.org/SEBIM#StyleArea"/>
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vegetation</description>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#AcousticPerformance"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#ConstructionIndoorAirQualityPlan"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Daylight"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#IndoorAirQualityAssessment"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#IndoorAirQualityStrategy"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#InteriorLighting"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#LowEmittingMaterial"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#QualityView"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#ThermalComfort"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#BicycleFacilities"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#GreenVehicle"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#HighPrioritySite"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#NeighborhoodDevelopmentLocation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#QualityTransport"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#ReducedParkingFootprint"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#SensitiveLandProtection"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#SurroundingDensityDiverseUses"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#BikePath"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#BuildingCertified"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#BusStop"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Park"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#BikePath"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#BusStop"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Terrain"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#BuildingLifecyleImpactReduction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#ConstructionDemolitionWaste"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#EnvironmentalProductDeclaration"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#MaterialIngredients"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#PbtSourceReduction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#SourceReductionMercury"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#SourcingRawMaterial"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Certification"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#CityData"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Equipment"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Geometry"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Interface"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Material"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#MaterialClassification"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Measurement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#StyleArea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Terrain"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Zone"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Certification"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Equipment"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Interface"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Material"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#MaterialClassification"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Measurement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#StyleArea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Terrain"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Zone"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Certification"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Equipment"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Interface"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Material"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Measurement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#StyleArea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Terrain"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Zone"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Certification"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Equipment"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Interface"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Material"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Measurement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#StyleArea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Zone"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#CertificationArea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#LEEDCertified"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#LEEDGold"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#LEEDPlatinum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#LEEDSilver"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Construction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Floor"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Space"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#CoolingTowerWaterUse"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#IndoorWaterUseReduction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#OutdoorWaterUseReduction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#WaterMetering"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#HeatIslandReduction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#LightPollutionReduction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#OpenSpace"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#RainwaterManagement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#SiteAssessment"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#SiteDevelopment"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#SiteMasterPlan"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#TenantDesignConstructionGuidelines"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Andar0"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Andar1"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Andar2"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Apartamento_101"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Apartamento_102"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Apartamento_201"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Apartamento_202"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#AreaBicicleta"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Bicicletario"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#EdificioStark"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Escada"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#EspacoAberto"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#EspacoVegetacao"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Estacionamento"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#PainelFotovoltaico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Patio"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#ProducaoEnergiaRenovavel"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#SuporteBicicleta"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Terreno"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#Vegetacao"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#hasConstruction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#hasFloor"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#hasSpace"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#w">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#m">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#y">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#n">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#x">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#a">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#b">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#c">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#z">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#t">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#BicycleFacilities"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#Material"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#m"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#description"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#m"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#value"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#m"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#n"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#containsIgnoreCase"/>
+                                                        <swrl:arguments>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bike</rdf:first>
+                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </swrl:arguments>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#containsIgnoreCase"/>
+                                                                <swrl:arguments>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rack</rdf:first>
+                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </swrl:arguments>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                                                        <swrl:arguments>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first rdf:resource="http://www.semanticweb.org/SEBIM#n"/>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</rdf:first>
+                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </swrl:arguments>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#score"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S4</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#RenewableEnergyProduction"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#Construction"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#energyValue"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#x"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#a"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#Equipment"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#energyValue"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#b"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#divide"/>
+                                                                <swrl:arguments rdf:parseType="Collection">
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#c"/>
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#b"/>
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#a"/>
+                                                                </swrl:arguments>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                                                        <swrl:arguments>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first rdf:resource="http://www.semanticweb.org/SEBIM#c"/>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.02</rdf:first>
+                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </swrl:arguments>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                                                                <swrl:arguments>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                        <rdf:first rdf:resource="http://www.semanticweb.org/SEBIM#c"/>
+                                                                                        <rdf:rest>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</rdf:first>
+                                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:rest>
+                                                                                    </rdf:Description>
+                                                                                </swrl:arguments>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#score"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S5</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#RenewableEnergyProduction"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#Construction"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#energyValue"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#x"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#a"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#Equipment"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#energyValue"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#b"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#divide"/>
+                                                                <swrl:arguments rdf:parseType="Collection">
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#c"/>
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#b"/>
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#a"/>
+                                                                </swrl:arguments>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                                                        <swrl:arguments>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first rdf:resource="http://www.semanticweb.org/SEBIM#c"/>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</rdf:first>
+                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </swrl:arguments>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#score"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S3</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#RenewableEnergyProduction"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#Construction"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#energyValue"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#x"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#a"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#Equipment"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#energyValue"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#b"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#divide"/>
+                                                                <swrl:arguments rdf:parseType="Collection">
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#c"/>
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#b"/>
+                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#a"/>
+                                                                </swrl:arguments>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                                                        <swrl:arguments>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first rdf:resource="http://www.semanticweb.org/SEBIM#c"/>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01</rdf:first>
+                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </swrl:arguments>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#score"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S2</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#OpenSpace"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#Construction"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#Space"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/SEBIM#StyleArea"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#z"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#hasStyleArea"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#z"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#area"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#y"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#a"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#area"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#x"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/SEBIM#t"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#divide"/>
+                                                                                <swrl:arguments rdf:parseType="Collection">
+                                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#c"/>
+                                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#a"/>
+                                                                                    <rdf:Description rdf:about="http://www.semanticweb.org/SEBIM#t"/>
+                                                                                </swrl:arguments>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                <rdf:first>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                                                                        <swrl:arguments>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                <rdf:first rdf:resource="http://www.semanticweb.org/SEBIM#c"/>
+                                                                                                <rdf:rest>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3</rdf:first>
+                                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                                    </rdf:Description>
+                                                                                                </rdf:rest>
+                                                                                            </rdf:Description>
+                                                                                        </swrl:arguments>
+                                                                                    </rdf:Description>
+                                                                                </rdf:first>
+                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/SEBIM#score"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/SEBIM#w"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

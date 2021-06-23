@@ -8,5 +8,6 @@ Avaliar projetos construtivos "verdes" visa mensurar o quão sustentáveis são 
 Anotação semântica de dados: <a href="https://github.com/SemWebCentral/parliament" rel="nofollow">SDD2RDF</a></p>
 Armazenamento e inferências: <a href="https://github.com/tetherless-world/SemanticDataDictionary" rel="nofollow">Parliament</a></p>
 
-<b> Dados externos <b>
+<b> Dados externos </b>
+
 Dados abertos da prefeitura de Belo Horizonte: <a href="http://bhmap.pbh.gov.br/v2/mapa/idebhgeo" rel="nofollow">BH Map</a></p>

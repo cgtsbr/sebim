@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:geo="http://www.opengis.net/ont/geosparql#"
+	xmlns:ex="http://www.example.org/POI#"
+	xmlns:sf="http://www.opengis.net/ont/sf#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<rdf:Description rdf:about="http://www.example.org/POI#Restaurant">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://www.example.org/POI#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#Park">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://www.example.org/POI#Attraction"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#Museum">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://www.example.org/POI#Attraction"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#Monument">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://www.example.org/POI#Attraction"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#Service">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://www.example.org/POI#PointOfInterest"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#Attraction">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://www.example.org/POI#PointOfInterest"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#PointOfInterest">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#WashingtonMonument">
+	<rdf:type rdf:resource="http://www.example.org/POI#Monument"/>
+	<rdfs:label>Washington Monument</rdfs:label>
+	<geo:hasGeometry rdf:resource="http://www.example.org/POI#WMPoint"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#WMPoint">
+	<rdf:type rdf:resource="http://www.opengis.net/ont/sf#Point"/>
+	<geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(-77.03524 38.889468)</geo:asWKT>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#NationalMall">
+	<rdf:type rdf:resource="http://www.example.org/POI#Park"/>
+	<rdfs:label>National Mall</rdfs:label>
+	<geo:hasGeometry rdf:resource="http://www.example.org/POI#NMPoly"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://www.example.org/POI#NMPoly">
+	<rdf:type rdf:resource="http://www.opengis.net/ont/sf#Polygon"/>
+	<geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON((-77.050125 38.892086, -77.039482 38.892036, -77.039482 38.895393, -77.033669 38.895508, -77.033585 38.892052, -77.031906 38.892086, -77.031883 38.887474, -77.050232 38.887142, -77.050125 38.892086 ))</geo:asWKT>
+</rdf:Description>
+
+</rdf:RDF>

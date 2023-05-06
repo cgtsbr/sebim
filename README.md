@@ -16,3 +16,7 @@ Armazenamento e inferências: <a href="https://github.com/tetherless-world/Seman
 <b> Dados externos: </b>
 
 Dados abertos da prefeitura de Belo Horizonte: <a href="http://bhmap.pbh.gov.br/v2/mapa/idebhgeo" rel="nofollow">BH Map</a></p>
+
+<b> Inferências: </b>
+
+<a href="https://docs.google.com/spreadsheets/d/1T9lD6uymg4yeKYwNU6oGuBpsn6QXmJHxFev_F45MKRw/edit?usp=sharing" rel="nofollow">Questões de Competência</a></p>

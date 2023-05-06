@@ -6,6 +6,7 @@ A avaliação de projetos construtivos sustentáveis objetiva mensurar o desempe
 
 
 <b>Ontologia em OntoUML</b>
+![SEBIM](SEBIM.jpg)
 
 <b>Ferramentas utilizadas:</b>
 
